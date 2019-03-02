@@ -1,3 +1,45 @@
-<p>
-  home works!
-</p>
+
+<div class="container">
+  <div class="row">
+    <section class="table-data" *ngIf="projects">
+        <mat-form-field>
+            <input type="text" [(ngModel)]="townFilter.townTitle" matInput placeholder="Search By Town" [matAutocomplete]="auto">
+        </mat-form-field>
+
+        <mat-form-field>
+        <mat-select placeholder="Search by theme">
+            <mat-option *ngFor="let theme of themes" [value]="">
+              {{theme.name}}
+            </mat-option>
+        </mat-select>
+        </mat-form-field>
+
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of towns" [value]="option.name">{{option.name}}</mat-option>
+        </mat-autocomplete>
+
+        <table class="table">
+            <thead>
+              <tr>
+                  <th>Nom</th>
+                  <th>Commune</th>
+                  <th>Thème</th>
+                  <th>Date de début</th>
+                  <th>Date de fin</th>
+                  <th>Progression</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let project of projects | filterBy: townFilter">
+                  <td>{{project.name}}</td>
+                  <td>{{project.townTitle}}</td>
+                  <td><span *ngFor="let theme of project.themes">{{ theme.name }} </span></td>
+                  <td>{{project.startdate | date:"dd/MM/yy"}}</td>
+                  <td>{{project.stopdate | date:"dd/MM/yy"}}</td>
+                  <td>{{ getProgression(project.stopdate,project.startdate) }}jours</td>
+              </tr>
+            </tbody>
+          </table>
+    </section>
+    </div>
+</div>
