@@ -38,4 +38,7 @@ export class ProjectComponent implements OnInit {
       }
     );
   }
+  goBack(): void {
+    this.location.back();
+  }
 }

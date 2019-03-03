@@ -24,7 +24,7 @@ export class WilwayService {
   private log(message: string) {
     this.messageService.add(`WilwayService: ${message}`);
   }
-  
+
   private extractData(res: Response) {
     const body = res;
     return body || { };
@@ -32,7 +32,7 @@ export class WilwayService {
 
   /*
   *
-  * Get Projects method -> Return an object json with projects data
+  * Get Projects function -> Return an object json with projects data
   *
   */
   AllProjects(): Observable<any> {
@@ -48,16 +48,14 @@ export class WilwayService {
 
   /*
   *
-  * Get Towns method -> Return an object json with towns data
+  * Get Towns function -> Return an object json with towns data
   *
   */
-  AllTowns(): Observable<Town[]> {
+  AllTowns(): Observable<any> {
     return this.http
-    .get<Town[]>( this.baseURL + 'alltowns', httpOptions )
+    .get( this.baseURL + 'alltowns', httpOptions )
     .pipe(
-      tap(
-        _ => this.log('fetched towns')
-      ),
+      map( this.extractData ),
       catchError(
         this.handleError('getTowns', [])
       )
@@ -66,16 +64,14 @@ export class WilwayService {
 
   /*
   *
-  * Get Config method -> Return an object json with config data
+  * Get Config function -> Return an object json with config data
   *
   */
-  getConfig(): Observable<Config[]> {
+  getConfig(): Observable<any> {
     return this.http
-    .get<Config[]>( this.baseURL + 'config', httpOptions )
+    .get( this.baseURL + 'config', httpOptions )
     .pipe(
-      tap(
-        _ => this.log('fetched config')
-      ),
+      map( this.extractData ),
       catchError(
         this.handleError('getconfig', [])
       )

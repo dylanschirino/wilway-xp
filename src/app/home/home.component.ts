@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
   /*
   * Return value: Array with object of projects
   */
-  getProjects() {
+  getProjects(): void {
     this.projects = [];
     this.data.AllProjects().subscribe((datas: {}) => {
       this.projects = datas;
@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
   * Return value: Array with object of themes
   */
   getThemes(): void {
+    this.themes = [];
     this.data.getConfig()
       .subscribe( ( themes: any ) => {
         this.themes = themes.response.Themes.filter(this.onlyUnique);
@@ -56,6 +57,7 @@ export class HomeComponent implements OnInit {
   * Return value: Array with object of town
   */
   getTowns(): void {
+    this.towns = [];
     this.data.AllTowns()
       .subscribe( (towns: any ) => {
         this.towns = towns.response.filter(this.onlyUnique);
@@ -81,7 +83,7 @@ export class HomeComponent implements OnInit {
   onlyUnique(value, index, self): any {
     return self.indexOf(value) === index;
   }
-  
+
   /*
   * Small helper to check if it's an array
   */

@@ -16,6 +16,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,6 +50,7 @@ import { NavComponent } from './nav/nav.component';
     MatToolbarModule,
     MatButtonModule,
     MatSelectModule,
+    MatIconModule,
     NgxSpinnerModule,
     PaginatorModule,
     ReactiveFormsModule,

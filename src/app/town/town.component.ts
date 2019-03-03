@@ -21,18 +21,31 @@ export class TownComponent implements OnInit {
     this.getTown();
   }
 
+  /*
+  *
+  * Get Town function -> Get town in name match url
+  *
+  */
   getTown(): void {
     let name = this.route.snapshot.paramMap.get('name');
+    name = name.replace(/\s/g, '');
     this.data.AllTowns()
       .subscribe( (towns: any ) => {
         const town = towns.response.filter( obj => {
-          obj.title = obj.title.replace(/é|è|\s/g,'');
-          name = name.replace(/é|è|\s/g,'');
-          return obj.title.toLowerCase() == name;
+          obj.title = obj.title.replace(/\s/g, '');
+          return obj.title.toLowerCase() === name;
         });
         this.town = town[0];
       }
     );
   }
 
+  /*
+  *
+  * Go Back function -> Helper to get back to previous visited page
+  *
+  */
+  goBack(): void {
+    this.location.back();
+  }
 }
