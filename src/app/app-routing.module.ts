@@ -5,10 +5,10 @@ import { TownComponent } from './town/town.component';
 import { ProjectComponent } from './project/project.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'prefix' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'town/:name', component: TownComponent },
-  { path: 'project', component: ProjectComponent },
+  { path: 'project/:id', component: ProjectComponent },
 ];
 
 @NgModule({

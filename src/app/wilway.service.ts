@@ -3,7 +3,7 @@ import { Observable, of} from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Project } from './project';
 import { Town } from './town';
 import { Config } from './config';
@@ -24,21 +24,23 @@ export class WilwayService {
   private log(message: string) {
     this.messageService.add(`WilwayService: ${message}`);
   }
+  private extractData(res: Response) {
+    const body = res;
+    return body || { };
+  }
 
   /*
   *
   * Get Projects method -> Return an object json with projects data
   *
   */
-  AllProjects(): Observable<Project[]> {
+  AllProjects(): Observable<any> {
     return this.http
-    .get<Project[]>( this.baseURL + 'allprojects', httpOptions )
+    .get( this.baseURL + 'allprojects', httpOptions )
     .pipe(
-      tap(
-        _ => this.log('fetched projects')
-      ),
+      map( this.extractData ),
       catchError(
-        this.handleError('getProjects', [])
+        this.handleError('getTowns', [])
       )
     );
   }
@@ -91,5 +93,7 @@ export class WilwayService {
       return of(result as T);
     };
   }
+
+
 
 }

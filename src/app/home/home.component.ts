@@ -1,16 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import * as moment from 'moment';
-import {MatPaginator, MatSort} from '@angular/material';
-import {merge, Observable, of as observableOf} from 'rxjs';
-import {catchError, map, startWith, switchMap} from 'rxjs/operators';
-
-
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Project } from '../project';
 import { WilwayService } from '../wilway.service';
 import { Town } from '../town';
 import { Config } from '../config';
-import { config } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -20,30 +14,30 @@ import { config } from 'rxjs';
 export class HomeComponent implements OnInit {
 
   // Variables initialization
-  projects: Project[] = [] ;
+  projects: any = [] ;
   themes: Config[] = [];
   towns: Town[] = [] ;
-  displayedColumns: string[] = ['name', 'townTitle', 'themes', 'startdate', 'stopdate', 'progression'];
+  displayedColumns: string[] = ['name', 'townTitle', 'themes', 'startdate', 'stopdate', 'progression', 'id'];
   townFilter: any = { name: '' };
   themeFilter: any = { name: '' };
   loading = true;
-  private projectsObservable: Observable<any[]>;
 
-  constructor( private data: WilwayService ) {
+  constructor( private data: WilwayService, private spinner: NgxSpinnerService ) {
   }
 
   ngOnInit() {
-     this.getProjects();
+     this.spinner.show();
      this.getTowns();
      this.getThemes();
+     this.getProjects();
   }
 
-  getProjects(): void {
-    this.data.AllProjects()
-      .subscribe( (projects: any ) => {
-        this.projects = projects.response.filter(this.onlyUnique);
-      }
-    );
+  getProjects() {
+    this.projects = [];
+    this.data.AllProjects().subscribe((datas: {}) => {
+      this.projects = datas;
+      this.spinner.hide();
+    });
   }
 
   getThemes(): void {
@@ -68,15 +62,15 @@ export class HomeComponent implements OnInit {
       const startDate = moment(start);
       const stopDate =  moment( new Date() );
       const progression = stopDate.diff(startDate, 'days') ;
-        return progression + 'jours écoulés';
+      return progression + ' jours écoulés';
     }
   }
 
   onlyUnique(value, index, self): any {
     return self.indexOf(value) === index;
   }
-  getElement(value, index,self):any{
-      return self.index === value;
-  }
 
+  isArray(obj : any ) {
+    return Array.isArray(obj);
+ }
 }

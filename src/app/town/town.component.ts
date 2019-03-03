@@ -22,11 +22,13 @@ export class TownComponent implements OnInit {
   }
 
   getTown(): void {
-    const name = this.route.snapshot.paramMap.get('name');
+    let name = this.route.snapshot.paramMap.get('name');
     this.data.AllTowns()
       .subscribe( (towns: any ) => {
         const town = towns.response.filter( obj => {
-          return obj.name === name;
+          obj.title = obj.title.replace(/é|è|\s/g,'');
+          name = name.replace(/é|è|\s/g,'');
+          return obj.title.toLowerCase() == name;
         });
         this.town = town[0];
       }

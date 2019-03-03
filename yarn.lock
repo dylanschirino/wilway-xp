@@ -2540,7 +2540,7 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2:
   version "4.1.15"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00"
 
-hammerjs@^2.0.8:
+hammerjs:
   version "2.0.8"
   resolved "https://registry.yarnpkg.com/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
 
@@ -3858,6 +3858,12 @@ ngx-filter-pipe:
   resolved "https://registry.yarnpkg.com/ngx-filter-pipe/-/ngx-filter-pipe-2.1.2.tgz#d3368f22bf45c74d5fcdae3701501db15fb90399"
   dependencies:
     tslib "^1.7.1"
+
+ngx-spinner:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-spinner/-/ngx-spinner-7.0.0.tgz#44762ef684361a928ae58e73569c543e20ac0bd1"
+  dependencies:
+    tslib "^1.9.0"
 
 nice-try@^1.0.4:
   version "1.0.5"
