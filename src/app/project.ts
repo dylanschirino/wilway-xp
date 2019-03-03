@@ -6,5 +6,5 @@ export class Project {
   townTitle: string;
   startdate: moment.Moment;
   stopdate: moment.Moment;
-  themes: string;
+  themes: any;
 }

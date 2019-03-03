@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Project } from './project';
 import { Town } from './town';
+import { Config } from './config';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -29,6 +30,11 @@ export class WilwayService {
   AllTowns(): Observable<Town[]> {
     return this.http
     .get<Town[]>( this.baseURL + 'alltowns' );
+  }
+
+  getConfig(): Observable<Config[]> {
+    return this.http
+    .get<Config[]>( this.baseURL + 'config' );
   }
 
 
