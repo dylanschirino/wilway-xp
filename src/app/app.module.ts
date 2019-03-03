@@ -18,13 +18,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { TownComponent } from './town/town.component';
 import { ProjectComponent } from './project/project.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TownComponent,
-    ProjectComponent
+    ProjectComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

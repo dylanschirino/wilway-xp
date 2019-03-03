@@ -5,7 +5,8 @@ import { TownComponent } from './town/town.component';
 import { ProjectComponent } from './project/project.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'prefix' },
+  { path: 'home', component: HomeComponent },
   { path: 'town/:name', component: TownComponent },
   { path: 'project', component: ProjectComponent },
 ];

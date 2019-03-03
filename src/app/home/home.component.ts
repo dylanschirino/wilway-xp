@@ -68,12 +68,15 @@ export class HomeComponent implements OnInit {
       const startDate = moment(start);
       const stopDate =  moment( new Date() );
       const progression = stopDate.diff(startDate, 'days') ;
-        return progression + 'jours restant';
+        return progression + 'jours écoulés';
     }
   }
 
   onlyUnique(value, index, self): any {
     return self.indexOf(value) === index;
+  }
+  getElement(value, index,self):any{
+      return self.index === value;
   }
 
 }

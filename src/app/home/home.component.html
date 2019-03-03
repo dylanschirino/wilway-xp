@@ -1,6 +1,7 @@
 
 <div class="container">
   <div class="row">
+    <app-message></app-message>
     <section class="table-data" *ngIf="projects">
         <mat-form-field>
             <input type="text" [(ngModel)]="townFilter.townTitle" matInput placeholder="Search By Town" [matAutocomplete]="auto">
@@ -32,11 +33,11 @@
                 <td mat-cell *matCellDef="let row"><span *ngFor="let theme of row.themes">{{ theme.name }} </span></td>
             </ng-container>
             <ng-container matColumnDef="startdate">
-                <th mat-header-cell *matHeaderCellDef>Date de début</th>
+                <th mat-header-cell *matHeaderCellDef>Début</th>
                 <td mat-cell *matCellDef="let row">{{row.startdate | date:"dd/MM/yy"}}</td>
             </ng-container>
             <ng-container matColumnDef="stopdate">
-                <th mat-header-cell *matHeaderCellDef>Date de fin</th>
+                <th mat-header-cell *matHeaderCellDef>Fin</th>
                 <td mat-cell *matCellDef="let row">{{row.stopdate | date:"dd/MM/yy"}}</td>
             </ng-container>
             <ng-container matColumnDef="progression">
