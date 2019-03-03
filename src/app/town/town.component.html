@@ -1,0 +1,46 @@
+
+<section class="header">
+  <img *ngIf="town.img" src="{{town.img}}" class="header__img">
+  <h1 *ngIf="town.title" class="header__title">{{ town.title}}</h1>
+</section>
+
+<section class="content mt-5">
+  <div class="container">
+    <div class="row">
+      <aside class="col-md-3 aside mat-elevation-z8">
+          <div class="aside-content" *ngIf="town.json.mayor">
+            <h2 class="aside__title">Maire</h2>
+            <p>{{town.json.mayor}}</p>
+        </div>
+        <div class="aside-content" *ngIf="town.street || town.country ">
+          <h2 class="aside__title">Adresse</h2>
+          <p>{{town.street}} {{town.number}}, {{town.zip}} {{town.country}}</p>
+        </div>
+        <div class="aside-content" *ngIf="town.json.email">
+            <h2 class="aside__title">Email</h2>
+            <p>{{town.json.email}}</p>
+        </div>
+        <div class="aside-content" *ngIf="town.json.tel">
+            <h2 class="aside__title">Téléphone</h2>
+            <p>{{town.json.tel}}</p>
+        </div>
+        <div class="aside-content" *ngIf="town.json.facebook || town.json.blog">
+            <h2 class="aside__title">Liens utiles</h2>
+            <div class="links__content">
+              <a mat-raised-button class="mr-3" color="primary" *ngIf="town.json.facebook" href="{{town.json.facebook }}" target="_blank">
+              Facebook
+              </a>
+              <a mat-raised-button color="primary" *ngIf="town.json.blog" href="{{town.json.blog }}" target="_blank">
+                  Blog
+              </a>
+            </div>
+        </div>
+      </aside>
+
+      <div class="col-md-8 ml-5 mat-elevation-z8 main-content" *ngIf="town.json.description">
+        <h2 class="main-content__label">Description</h2>
+        <div [innerHTML]="town.json.description"></div>
+      </div>
+    </div>
+  </div>
+</section>
