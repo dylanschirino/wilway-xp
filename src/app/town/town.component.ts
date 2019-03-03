@@ -34,5 +34,8 @@ export class TownComponent implements OnInit {
       }
     );
   }
-
+  
+  goBack(): void {
+    this.location.back();
+  }
 }

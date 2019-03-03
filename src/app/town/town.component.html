@@ -1,5 +1,6 @@
 
 <section class="header">
+  <button mat-fab class="go-back" (click)="goBack()"><mat-icon>arrow_back</mat-icon></button>
   <img *ngIf="town.img" src="{{town.img}}" class="header__img">
   <h1 *ngIf="town.title" class="header__title">{{ town.title}}</h1>
 </section>
