@@ -14,7 +14,7 @@ fullScreen = "false"
     <section class="table-data" *ngIf="projects">
       <div class="container">
         <div class="row">
-            <mat-toolbar class="text-center mb-2">
+            <mat-toolbar class="text-center mt-5 mb-2">
                 <span>Consultez ci-dessous les derniers projets mis à jour.</span>
             </mat-toolbar>
             <div class="col-md-6">
@@ -25,9 +25,11 @@ fullScreen = "false"
                     <mat-option *ngFor="let option of towns" [value]="option.name">{{option.name}}</mat-option>
                   </mat-autocomplete>
             </div>
+
             <div class="col-md-6">
                 <mat-form-field>
-                    <mat-select placeholder="Rechercher par Theme">
+                    <mat-select placeholder="Rechercher par Theme" [(ngModel)]="themeFilter.themes">
+                        <mat-option>Tout les thèmes</mat-option>
                         <mat-option *ngFor="let theme of themes" [value]="theme.name">
                           {{theme.name}}
                         </mat-option>
@@ -39,7 +41,7 @@ fullScreen = "false"
       </div>
 
         <div class="mat-elevation-z8">
-          <table mat-table class="table table-responsive" [dataSource]="projects.response | filterBy: townFilter" class="example-table"
+          <table mat-table class="table table-responsive" [dataSource]="projects.response | filterBy: townFilter | filterBy: themeFilter" class="example-table"
             matSort matSortActive="created" matSortDisableClear matSortDirection="desc">
             <ng-container matColumnDef="name">
                 <th mat-header-cell class="text-center" *matHeaderCellDef>Nom</th>

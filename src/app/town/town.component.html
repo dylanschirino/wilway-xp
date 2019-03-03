@@ -9,12 +9,12 @@
     <div class="row">
       <aside class="col-md-3 aside mat-elevation-z8">
           <div class="aside-content" *ngIf="town.json.mayor">
-              <h2 class="aside__title">Maire</h2>
-              <p>{{town.json.mayor}}</p>
+            <h2 class="aside__title">Maire</h2>
+            <p>{{town.json.mayor}}</p>
         </div>
         <div class="aside-content" *ngIf="town.street || town.country ">
           <h2 class="aside__title">Adresse</h2>
-          <p>‹{{town.street}} {{town.number}}, {{town.zip}} {{town.country}}</p>
+          <p>{{town.street}} {{town.number}}, {{town.zip}} {{town.country}}</p>
         </div>
         <div class="aside-content" *ngIf="town.json.email">
             <h2 class="aside__title">Email</h2>

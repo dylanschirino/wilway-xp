@@ -6,6 +6,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import {PaginatorModule} from 'primeng/paginator';
 
 // Angular Material Import
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -22,6 +23,7 @@ import { HomeComponent } from './home/home.component';
 import { TownComponent } from './town/town.component';
 import { ProjectComponent } from './project/project.component';
 import { MessageComponent } from './message/message.component';
+import { NavComponent } from './nav/nav.component';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { MessageComponent } from './message/message.component';
     HomeComponent,
     TownComponent,
     ProjectComponent,
-    MessageComponent
+    MessageComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ import { MessageComponent } from './message/message.component';
     MatButtonModule,
     MatSelectModule,
     NgxSpinnerModule,
+    PaginatorModule,
     ReactiveFormsModule,
     FormsModule
   ],

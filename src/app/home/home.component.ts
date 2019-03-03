@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
   displayedColumns: string[] = ['name', 'townTitle', 'themes', 'startdate', 'stopdate', 'progression', 'id'];
   townFilter: any = { name: '' };
   themeFilter: any = { name: '' };
-  loading = true;
 
   constructor( private data: WilwayService, private spinner: NgxSpinnerService ) {
   }
@@ -32,6 +31,9 @@ export class HomeComponent implements OnInit {
      this.getProjects();
   }
 
+  /*
+  * Return value: Array with object of projects
+  */
   getProjects() {
     this.projects = [];
     this.data.AllProjects().subscribe((datas: {}) => {
@@ -40,6 +42,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  /*
+  * Return value: Array with object of themes
+  */
   getThemes(): void {
     this.data.getConfig()
       .subscribe( ( themes: any ) => {
@@ -47,7 +52,9 @@ export class HomeComponent implements OnInit {
       } );
   }
 
-
+  /*
+  * Return value: Array with object of town
+  */
   getTowns(): void {
     this.data.AllTowns()
       .subscribe( (towns: any ) => {
@@ -56,7 +63,9 @@ export class HomeComponent implements OnInit {
     );
   }
 
-
+  /*
+  * Return value: String with number of days elapsed from today since stardate
+  */
   getProgression(stop, start): string {
     if ( start != null && stop != null ) {
       const startDate = moment(start);
@@ -66,11 +75,17 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  /*
+  * Small helper to remove doublon in array
+  */
   onlyUnique(value, index, self): any {
     return self.indexOf(value) === index;
   }
-
-  isArray(obj : any ) {
+  
+  /*
+  * Small helper to check if it's an array
+  */
+  isArray(obj: any ) {
     return Array.isArray(obj);
- }
+  }
 }

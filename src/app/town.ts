@@ -4,4 +4,5 @@ export class Town {
   tel: string;
   email: string;
   nhabitants: number;
+  json: any;
 }

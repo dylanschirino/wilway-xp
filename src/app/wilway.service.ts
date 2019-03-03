@@ -24,6 +24,7 @@ export class WilwayService {
   private log(message: string) {
     this.messageService.add(`WilwayService: ${message}`);
   }
+  
   private extractData(res: Response) {
     const body = res;
     return body || { };
@@ -40,7 +41,7 @@ export class WilwayService {
     .pipe(
       map( this.extractData ),
       catchError(
-        this.handleError('getTowns', [])
+        this.handleError('getProjects', [])
       )
     );
   }
