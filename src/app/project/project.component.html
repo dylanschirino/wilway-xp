@@ -8,6 +8,8 @@ fullScreen = "false"
 >
 <p style="color: white" > Loading... </p>
 </ngx-spinner>
-
-<div><span>Nom du project: </span>{{project.name}}</div>
-<div><span>id: </span>{{project.id}}</div>
+<section class="header">
+    <button mat-fab class="go-back" (click)="goBack()"><mat-icon>arrow_back</mat-icon></button>
+    <h1 *ngIf="project.name" class="header__title">{{ project.name}}</h1>
+    <h2 *ngIf="project.id" class="text-white">ID:{{project.id}}</h2>
+</section>
